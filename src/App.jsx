@@ -11,6 +11,10 @@ import InterviewsPage from "./Pages/InterviewsPage";
 import OffersPage from "./Pages/OffersPage";
 import RejectedPage from "./Pages/RejectedPage";
 import Error404Page from "./Pages/Error404Page";
+import ReportsPage from "./Pages/ReportsPage";
+import ActivityLogsPage from "./Pages/ActivityLogsPage";
+import AnalyticsPage from "./Pages/AnalyticsPage";
+import StaticsPage from "./Pages/StaticsPage";
 
 export default function App() {
   return (
@@ -39,6 +43,10 @@ export default function App() {
                 <Route path="/interviews" element={<InterviewsPage />} />
                 <Route path="/offers" element={<OffersPage />} />
                 <Route path="/reject" element={<RejectedPage />} />
+                <Route path="/reports" element={<ReportsPage />} />
+                <Route path="/activity" element={<ActivityLogsPage />} />
+                <Route path="/analytics" element={<AnalyticsPage />} />
+                <Route path="/statics" element={<StaticsPage />} />
 
                 <Route path="/*" element={<Error404Page />} />
 

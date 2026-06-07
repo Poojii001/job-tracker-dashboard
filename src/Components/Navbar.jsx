@@ -63,10 +63,10 @@ export default function Navbar() {
               data-parent="#accordionSidebar">
               <div className="bg-white py-2 collapse-inner rounded">
                 <h6 className="collapse-header">Insights:</h6>
-                <Link className="collapse-item" to="/">Analytics</Link>
-                <Link className="collapse-item" to="/">Reports</Link>
-                <Link className="collapse-item" to="/">Activity Logs</Link>
-                <Link className="collapse-item" to="/">Statistics</Link>
+                <Link className="collapse-item" to="/analytics">Analytics</Link>
+                <Link className="collapse-item" to="/reports">Reports</Link>
+                <Link className="collapse-item" to="/activity">Activity Logs</Link>
+                <Link className="collapse-item" to="/statics">Statistics</Link>
                 <Link className="collapse-item" to="/">Other</Link>
               </div>
             </div>
@@ -95,8 +95,7 @@ export default function Navbar() {
                 <Link className="collapse-item" to="/">Forgot Password</Link>
                 <div className="collapse-divider"></div>
                 <h6 className="collapse-header">Other Pages:</h6>
-                <Link className="collapse-item" to="/">404 Page</Link>
-                <Link className="collapse-item" to="/">Blank Page</Link>
+                <Link className="collapse-item" to="/*">404 Page</Link>
               </div>
             </div>
           </li>
