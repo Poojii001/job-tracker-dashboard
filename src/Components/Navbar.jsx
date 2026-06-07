@@ -14,6 +14,13 @@ export default function Navbar() {
             <div className="sidebar-brand-icon rotate-n-15">
               {/* <i className="fas fa-user-tie"></i> */}
               <i className="fas fa-chart-line"></i>
+              {/* <div className="sidebar-card d-none d-lg-flex">
+              <img
+                className="sidebar-card-illustration mb-2"
+                src="/img/Navbar/nav2.png"
+                alt="Job Tracker"
+              />
+              </div> */}
             </div>
             <Link to="/" className="sidebar-brand-text mx-3 text-light">{import.meta.env.VITE_APP_SITE_NAME}</Link>
           </Link>
@@ -85,7 +92,7 @@ export default function Navbar() {
             <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
               aria-expanded="true" aria-controls="collapsePages">
               <i className="fas fa-fw fa-folder"></i>
-              <span>Pages</span>
+              <span>User</span>
             </a>
             <div id="collapsePages" className="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
               <div className="bg-white py-2 collapse-inner rounded">
@@ -101,17 +108,16 @@ export default function Navbar() {
           </li>
 
           <li className="nav-item">
-            <Link className="nav-link" to="/">
+            <Link className="nav-link" to="/analytics">
               <i className="fas fa-fw fa-chart-area"></i>
-              <span>ApplicationsOverview Line Chart</span></Link>
+              <span>Job Trends</span></Link>
           </li>
 
           <li className="nav-item">
-            <Link className="nav-link" to="/">
+            <Link className="nav-link" to="/recentapp">
               <i className="fas fa-fw fa-table"></i>
-              <span>RecentApplications Tables</span></Link>
+              <span>Recent Jobs</span></Link>
           </li>
-
 
           <hr className="sidebar-divider d-none d-md-block" />
 
@@ -122,9 +128,20 @@ export default function Navbar() {
 
 
           <div className="sidebar-card d-none d-lg-flex">
-            <img className="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="..." />
-            <p className="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
-            <a className="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
+            <img
+              className="sidebar-card-illustration mb-2"
+              src="/img/Navbar/nav2.png"
+              alt="Job Tracker"
+            />
+
+            <p className="text-center mb-2">
+              <strong>Track Your Career Journey</strong><br />
+              Stay organized and never miss an opportunity.
+            </p>
+
+            <Link to="/applied-jobs" className="btn btn-success btn-sm">
+              View Applications
+            </Link>
           </div>
 
         </ul>

@@ -1,93 +1,93 @@
 import React from "react";
 
 export default function DashboardCard() {
+  const cards = [
+    {
+      title: "Total Applications",
+      count: 12,
+      icon: "fas fa-briefcase",
+      border: "primary",
+      bg: "bg-primary",
+      growth: "+15%",
+      text: "This month",
+    },
+    {
+      title: "Interviews",
+      count: 5,
+      icon: "fas fa-calendar-check",
+      border: "success",
+      bg: "bg-success",
+      growth: "+2",
+      text: "Upcoming",
+    },
+    {
+      title: "Offers",
+      count: 2,
+      icon: "fas fa-award",
+      border: "info",
+      bg: "bg-info",
+      growth: "+1",
+      text: "New offer",
+    },
+    {
+      title: "Rejected",
+      count: 3,
+      icon: "fas fa-times-circle",
+      border: "warning",
+      bg: "bg-warning",
+      growth: "-1",
+      text: "Improving",
+    },
+  ];
+
   return (
     <div className="row">
+      {cards.map((card, index) => (
+        <div className="col-xl-3 col-md-6 mb-4" key={index}>
+          <div
+            className={`card border-left-${card.border} shadow h-100 py-2`}
+          >
+            <div className="card-body">
+              <div className="d-flex justify-content-between align-items-center">
+                <div>
+                  <div
+                    className={`text-xs font-weight-bold text-${card.border} text-uppercase mb-1`}
+                  >
+                    {card.title}
+                  </div>
 
-      <div className="col-xl-3 col-md-6 mb-4">
-        <div className="card border-left-primary shadow h-100 py-2">
-          <div className="card-body">
-            <div className="row no-gutters align-items-center">
-              <div className="col mr-2">
-                <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                  Total Applications
+                  <div className="h3 font-weight-bold text-gray-800">
+                    {card.count}
+                  </div>
+
+                  <small className="text-muted">
+                    {card.growth} {card.text}
+                  </small>
                 </div>
-                <div className="h5 mb-0 font-weight-bold text-gray-800">
-                  12
+
+                <div
+                  className={`${card.bg} rounded-circle d-flex align-items-center justify-content-center`}
+                  style={{
+                    width: "60px",
+                    height: "60px",
+                  }}
+                >
+                  <i
+                    className={`${card.icon} text-white`}
+                    style={{ fontSize: "24px" }}
+                  ></i>
                 </div>
               </div>
 
-              <div className="col-auto">
-                <i className="fas fa-briefcase fa-2x text-gray-300"></i>
-              </div>
+              <hr />
+
+              <button className="btn btn-sm btn-outline-primary w-100">
+                View Details →
+              </button>
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="col-xl-3 col-md-6 mb-4">
-        <div className="card border-left-success shadow h-100 py-2">
-          <div className="card-body">
-            <div className="row no-gutters align-items-center">
-              <div className="col mr-2">
-                <div className="text-xs font-weight-bold text-success text-uppercase mb-1">
-                  Interviews
-                </div>
-                <div className="h5 mb-0 font-weight-bold text-gray-800">
-                  5
-                </div>
-              </div>
-
-              <div className="col-auto">
-                <i className="fas fa-calendar-check fa-2x text-gray-300"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="col-xl-3 col-md-6 mb-4">
-        <div className="card border-left-info shadow h-100 py-2">
-          <div className="card-body">
-            <div className="row no-gutters align-items-center">
-              <div className="col mr-2">
-                <div className="text-xs font-weight-bold text-info text-uppercase mb-1">
-                  Offers
-                </div>
-                <div className="h5 mb-0 font-weight-bold text-gray-800">
-                  2
-                </div>
-              </div>
-
-              <div className="col-auto">
-                <i className="fas fa-award fa-2x text-gray-300"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="col-xl-3 col-md-6 mb-4">
-        <div className="card border-left-warning shadow h-100 py-2">
-          <div className="card-body">
-            <div className="row no-gutters align-items-center">
-              <div className="col mr-2">
-                <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                  Rejected
-                </div>
-                <div className="h5 mb-0 font-weight-bold text-gray-800">
-                  3
-                </div>
-              </div>
-
-              <div className="col-auto">
-                <i className="fas fa-times-circle fa-2x text-gray-300"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      ))}
     </div>
   );
 }
