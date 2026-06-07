@@ -18,7 +18,6 @@ export default function StatusDistribution() {
           <p>Interview : 5</p>
           <p>Offer : 2</p>
           <p>Rejected : 3</p>
-
         </div>
       </div>
     </div>

@@ -15,9 +15,8 @@ export default function Navbar() {
               {/* <i className="fas fa-user-tie"></i> */}
               <i className="fas fa-chart-line"></i>
             </div>
-            <div className="sidebar-brand-text mx-3">Job Tracker</div>
+            <Link to="/" className="sidebar-brand-text mx-3 text-light">{import.meta.env.VITE_APP_SITE_NAME}</Link>
           </Link>
-
 
           <hr className="sidebar-divider my-0" />
 
@@ -46,9 +45,9 @@ export default function Navbar() {
             <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
               <div className="bg-white py-2 collapse-inner rounded">
                 <h6 className="collapse-header">Applied Jobs:</h6>
-                <a className="collapse-item" href="buttons.html">Interviews</a>
-                <a className="collapse-item" href="cards.html">Offers</a>
-                <a className="collapse-item" href="cards.html">Rejected</a>
+                <Link className="collapse-item" to="/interviews">Interviews</Link>
+                <Link className="collapse-item" to="/offers">Offers</Link>
+                <Link className="collapse-item" to="/reject">Rejected</Link>
               </div>
             </div>
           </li>
@@ -64,11 +63,11 @@ export default function Navbar() {
               data-parent="#accordionSidebar">
               <div className="bg-white py-2 collapse-inner rounded">
                 <h6 className="collapse-header">Insights:</h6>
-                <a className="collapse-item" href="utilities-color.html">Analytics</a>
-                <a className="collapse-item" href="utilities-border.html">Reports</a>
-                <a className="collapse-item" href="utilities-animation.html">Activity Logs</a>
-                <a className="collapse-item" href="utilities-animation.html">Statistics</a>
-                <a className="collapse-item" href="utilities-other.html">Other</a>
+                <Link className="collapse-item" to="/">Analytics</Link>
+                <Link className="collapse-item" to="/">Reports</Link>
+                <Link className="collapse-item" to="/">Activity Logs</Link>
+                <Link className="collapse-item" to="/">Statistics</Link>
+                <Link className="collapse-item" to="/">Other</Link>
               </div>
             </div>
           </li>
@@ -77,9 +76,9 @@ export default function Navbar() {
           <hr className="sidebar-divider" />
 
 
-          <div className="sidebar-heading">
+          {/* <div className="sidebar-heading">
             Addons
-          </div>
+          </div> */}
 
 
           <li className="nav-item">
@@ -91,27 +90,27 @@ export default function Navbar() {
             <div id="collapsePages" className="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
               <div className="bg-white py-2 collapse-inner rounded">
                 <h6 className="collapse-header">Login Screens:</h6>
-                <a className="collapse-item" href="login.html">Login</a>
-                <a className="collapse-item" href="register.html">Register</a>
-                <a className="collapse-item" href="forgot-password.html">Forgot Password</a>
+                <Link className="collapse-item" to="/">Login</Link>
+                <Link className="collapse-item" to="/">Register</Link>
+                <Link className="collapse-item" to="/">Forgot Password</Link>
                 <div className="collapse-divider"></div>
                 <h6 className="collapse-header">Other Pages:</h6>
-                <a className="collapse-item" href="404.html">404 Page</a>
-                <a className="collapse-item" href="blank.html">Blank Page</a>
+                <Link className="collapse-item" to="/">404 Page</Link>
+                <Link className="collapse-item" to="/">Blank Page</Link>
               </div>
             </div>
           </li>
 
           <li className="nav-item">
-            <a className="nav-link" href="charts.html">
+            <Link className="nav-link" to="/">
               <i className="fas fa-fw fa-chart-area"></i>
-              <span>ApplicationsOverview Line Chart</span></a>
+              <span>ApplicationsOverview Line Chart</span></Link>
           </li>
 
           <li className="nav-item">
-            <a className="nav-link" href="tables.html">
+            <Link className="nav-link" to="/">
               <i className="fas fa-fw fa-table"></i>
-              <span>RecentApplications Tables</span></a>
+              <span>RecentApplications Tables</span></Link>
           </li>
 
 

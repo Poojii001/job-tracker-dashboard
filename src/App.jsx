@@ -10,6 +10,7 @@ import RecentApplicationPage from "./Pages/RecentApplicationPage";
 import InterviewsPage from "./Pages/InterviewsPage";
 import OffersPage from "./Pages/OffersPage";
 import RejectedPage from "./Pages/RejectedPage";
+import Error404Page from "./Pages/Error404Page";
 
 export default function App() {
   return (
@@ -38,6 +39,9 @@ export default function App() {
                 <Route path="/interviews" element={<InterviewsPage />} />
                 <Route path="/offers" element={<OffersPage />} />
                 <Route path="/reject" element={<RejectedPage />} />
+
+                <Route path="/*" element={<Error404Page />} />
+
               </Routes>
             </div>
           </div>
