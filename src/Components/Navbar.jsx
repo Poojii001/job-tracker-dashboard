@@ -4,26 +4,18 @@ import { Link } from 'react-router-dom'
 export default function Navbar() {
   return (
     <>
-
-
       <div id="wrapper">
         <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 
-          <Link className="sidebar-brand d-flex align-items-center justify-content-center" to="/">
+          <div className="sidebar-brand d-flex align-items-center justify-content-center" to="/">
             <div className="sidebar-brand-icon rotate-n-15">
               {/* <i className="fas fa-user-tie"></i> */}
               <i className="fas fa-chart-line"></i>
-              {/* <div className="sidebar-card d-none d-lg-flex">
-              <img
-                className="sidebar-card-illustration mb-2"
-                src="/img/Navbar/nav2.png"
-                alt="Job Tracker"
-              />
-              </div> */}
+              
             </div>
             <Link to="/" className="sidebar-brand-text mx-3 text-light">{import.meta.env.VITE_APP_SITE_NAME}</Link>
-          </Link>
+          </div>
 
           <hr className="sidebar-divider my-0" />
 
