@@ -75,9 +75,9 @@ export default function Navbar() {
           <hr className="sidebar-divider" />
 
 
-          {/* <div className="sidebar-heading">
-            Addons
-          </div> */}
+          <div className="sidebar-heading">
+            <Link className='text-light' to="/admin">Admin HomePage</Link>
+          </div>
 
 
           <li className="nav-item">

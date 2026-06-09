@@ -15,6 +15,8 @@ import ReportsPage from "./Pages/ReportsPage";
 import ActivityLogsPage from "./Pages/ActivityLogsPage";
 import AnalyticsPage from "./Pages/AnalyticsPage";
 import StaticsPage from "./Pages/StaticsPage";
+import AdminDashboardPage from "./Pages/Admin/AdminDashboardPage";
+import AdminManageUsersPage from "./Pages/Admin/ManageUsers/AdminManageUsersPage";
 
 export default function App() {
   return (
@@ -47,6 +49,11 @@ export default function App() {
                 <Route path="/activity" element={<ActivityLogsPage />} />
                 <Route path="/analytics" element={<AnalyticsPage />} />
                 <Route path="/statics" element={<StaticsPage />} />
+
+                {/* Admin Routes  */}
+                <Route path="/Admin" element={<AdminDashboardPage />} />
+                <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
+                <Route path="/admin/users" element={<AdminManageUsersPage />} />
 
                 <Route path="/*" element={<Error404Page />} />
 
