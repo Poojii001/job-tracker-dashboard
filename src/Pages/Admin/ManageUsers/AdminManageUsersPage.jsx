@@ -1,9 +1,35 @@
-// AdminHomePage.jsx
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import AdminSidebar from '../../../Components/AdminSidebar'
 import { Link } from 'react-router-dom'
 
 export default function AdminManageUsersPage() {
+  let [ManageUsersStateData , setManageUsersStateData] = useState([])
+
+  useEffect(()=>{
+    (async()=>{
+      try {
+        let response = await fetch(`${import.meta.env.VITE_APP_BACKEND_SERVER}/users`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" }
+        })
+        if (response.ok) {
+          let users = await response.json()   // ✅ parse JSON
+          setManageUsersStateData(users)      // ✅ set array of users
+        } else {
+          console.error("Failed to fetch users")
+        }
+      } catch (err) {
+        console.error("Error fetching users:", err)
+      }
+    })()
+  }, [])
+
+  function deleteRecord(id) {
+    if (window.confirm("Are you sure you want to delete this user?")) {
+      setManageUsersStateData(ManageUsersStateData.filter(u => u.id !== id))
+      // optionally call backend DELETE API here
+    }
+  }
 
   return (
     <>
@@ -16,8 +42,42 @@ export default function AdminManageUsersPage() {
             <div className="card shadow">
               <h4 className="card-header bg-primary text-light text-center p-2">
                 Manage Users
-                <Link to="/admin/users/create"><i className='bi bi-plus text-light float-end fs-3'></i></Link>
+                <Link to="/admin/users/create">
+                  <i className='bi bi-plus text-light float-end fs-3'></i>
+                </Link>
               </h4>
+              <table id="DataTable" className='table table-bordered table-striped'>
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {ManageUsersStateData.map(item => (
+                    <tr key={item.id}>
+                      <td>{item.id}</td>
+                      <td>{item.name}</td>
+                      <td>{item.email}</td>
+                      <td>{item.status ? "Active" : "Inactive"}</td>
+                      <td>
+                        <Link to={`/admin/users/update/${item.id}`} className='btn btn-light bg-primary'>
+                          <i className='bi bi-pencil-square fs-5'></i>
+                        </Link>
+                      </td>
+                      <td>
+                        <button className='btn btn-danger' onClick={() => deleteRecord(item.id)}>
+                          <i className='bi bi-x-lg'></i>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

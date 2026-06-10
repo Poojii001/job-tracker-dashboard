@@ -18,6 +18,7 @@ import StaticsPage from "./Pages/StaticsPage";
 import AdminDashboardPage from "./Pages/Admin/AdminDashboardPage";
 import AdminManageUsersPage from "./Pages/Admin/ManageUsers/AdminManageUsersPage";
 import AdminManageUsersCreatePage from "./Pages/Admin/ManageUsers/AdminManageUsersCreatePage";
+import AdminManageUsersUpdatePage from "./Pages/Admin/ManageUsers/AdminManageUsersUpdatePage";
 
 export default function App() {
   return (
@@ -54,8 +55,10 @@ export default function App() {
                 {/* Admin Routes  */}
                 <Route path="/Admin" element={<AdminDashboardPage />} />
                 <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
+
                 <Route path="/admin/users" element={<AdminManageUsersPage />} />
                 <Route path="/admin/users/create" element={<AdminManageUsersCreatePage />} />
+                <Route path="/admin/users/update/:id" element={<AdminManageUsersUpdatePage />} />
 
                 <Route path="/*" element={<Error404Page />} />
 

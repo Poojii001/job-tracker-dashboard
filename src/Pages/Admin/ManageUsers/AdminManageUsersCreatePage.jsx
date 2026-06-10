@@ -1,23 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import AdminSidebar from '../../../Components/AdminSidebar'
 import FormValidator from '../../../Validators/FormValidator'
 
 export default function AdminManageUsersCreatePage() {
-  const [data, setData] = useState({
+  let [ManageUsersStateData , setManageUsersStateData] = useState([])
+  let [data, setData] = useState({
     name: "",
     email: "",
     role: "User",
     status: true
   })
 
-  const [errorMessage, setErrorMessage] = useState({
+  let [errorMessage, setErrorMessage] = useState({
     name: "Name field is mandatory",
     email: "Email field is mandatory"
   })
 
-  const [show, setShow] = useState(false)
-  const navigate = useNavigate()
+  let [show, setShow] = useState(false)
+  let navigate = useNavigate()
 
   function getInputData(e) {
     let { name, value } = e.target
@@ -40,7 +41,12 @@ export default function AdminManageUsersCreatePage() {
       setShow(true)
     } else {
       try {
-        let response = await fetch(`${import.meta.env.VITE_APP_API_URL}/users`, {
+        // let item = ManageUsersStateData.find(x=>x.name.toLocaleLowerCase()===data.name.toLocaleLowerCase())
+        // if(item){
+        //   setShow(true)
+        //   setErrorMessage({...errorMessage,'name':'Manage Users With This Name Already Exist'})
+        // }
+        let response = await fetch(`${import.meta.env.VITE_APP_BACKEND_SERVER}/users`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data)
@@ -59,6 +65,20 @@ export default function AdminManageUsersCreatePage() {
       }
     }
   }
+
+  useEffect(()=>{
+    (async()=>{
+      let response = await fetch(`${import.meta.env.VITE_APP_BACKEND_SERVER}/users`, {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        })
+        if (response.ok) {
+          alert("User created successfully!")
+          setManageUsersStateData(response)
+        }
+    })()
+  },[])
 
   return (
     <>

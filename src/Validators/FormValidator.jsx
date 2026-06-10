@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function FormValidator() {
+export default function FormValidator(e) {
     let { name, value } = e.target
 
     switch (name) {
