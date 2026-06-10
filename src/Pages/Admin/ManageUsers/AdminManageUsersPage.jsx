@@ -1,6 +1,7 @@
 // AdminHomePage.jsx
 import React from 'react'
 import AdminSidebar from '../../../Components/AdminSidebar'
+import { Link } from 'react-router-dom'
 
 export default function AdminManageUsersPage() {
 
@@ -13,9 +14,10 @@ export default function AdminManageUsersPage() {
           </div>
           <div className="col-md-9">
             <div className="card shadow">
-              <div className="card-header bg-primary text-light text-center">
-                Admin Profile
-              </div>
+              <h4 className="card-header bg-primary text-light text-center p-2">
+                Manage Users
+                <Link to="/admin/users/create"><i className='bi bi-plus text-light float-end fs-3'></i></Link>
+              </h4>
             </div>
           </div>
         </div>

@@ -17,6 +17,7 @@ import AnalyticsPage from "./Pages/AnalyticsPage";
 import StaticsPage from "./Pages/StaticsPage";
 import AdminDashboardPage from "./Pages/Admin/AdminDashboardPage";
 import AdminManageUsersPage from "./Pages/Admin/ManageUsers/AdminManageUsersPage";
+import AdminManageUsersCreatePage from "./Pages/Admin/ManageUsers/AdminManageUsersCreatePage";
 
 export default function App() {
   return (
@@ -54,6 +55,7 @@ export default function App() {
                 <Route path="/Admin" element={<AdminDashboardPage />} />
                 <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
                 <Route path="/admin/users" element={<AdminManageUsersPage />} />
+                <Route path="/admin/users/create" element={<AdminManageUsersCreatePage />} />
 
                 <Route path="/*" element={<Error404Page />} />
 
