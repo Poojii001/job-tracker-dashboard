@@ -45,7 +45,7 @@ export default function AdminSidebar() {
         <span className='float-end mt-2'>Notifications</span>
       </Link>
 
-      <Link to="/admin/audit-logs" className="list-group-item list-group-item-action text-light bg-primary">
+      <Link to="/admin/auditlogs" className="list-group-item list-group-item-action text-light bg-primary">
         <i className='bi bi-journal-text fs-5'></i>
         <span className='float-end mt-2'>Audit Logs</span>
       </Link>
