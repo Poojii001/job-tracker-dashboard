@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+
 import AdminSidebar from '../../../Components/AdminSidebar'
 import FormValidator from '../../../Validators/FormValidator'
 
+import { getUsers, createUsers } from "../../../Redux/ActionCreators/UsersActionCreators"
+
 export default function AdminManageUsersCreatePage() {
-  let [ManageUsersStateData , setManageUsersStateData] = useState([])
   let [data, setData] = useState({
     name: "",
     email: "",
@@ -18,16 +21,17 @@ export default function AdminManageUsersCreatePage() {
   })
 
   let [show, setShow] = useState(false)
+
+  let UsersStateData = useSelector(state => state.UsersStateData)   // ✅ Redux state
+  let dispatch = useDispatch()
   let navigate = useNavigate()
 
   function getInputData(e) {
     let { name, value } = e.target
-
     setErrorMessage({
       ...errorMessage,
       [name]: FormValidator(e)
     })
-
     setData({
       ...data,
       [name]: name === "status" ? (value === "1" ? true : false) : value
@@ -40,45 +44,24 @@ export default function AdminManageUsersCreatePage() {
     if (error) {
       setShow(true)
     } else {
-      try {
-        // let item = ManageUsersStateData.find(x=>x.name.toLocaleLowerCase()===data.name.toLocaleLowerCase())
-        // if(item){
-        //   setShow(true)
-        //   setErrorMessage({...errorMessage,'name':'Manage Users With This Name Already Exist'})
-        // }
-        let response = await fetch(`${import.meta.env.VITE_APP_BACKEND_SERVER}/users`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
-        })
-        if (response.ok) {
-          alert("User created successfully!")
-          navigate("/admin/users")
-        } else {
-          setShow(true)
-          setErrorMessage({ ...errorMessage, name: "Failed to create user" })
-        }
-      } catch (err) {
-        console.error("Error creating user:", err)
+      let item = UsersStateData.find(
+        x => x.name.toLocaleLowerCase() === data.name.toLocaleLowerCase()
+      )
+      if (item) {
         setShow(true)
-        setErrorMessage({ ...errorMessage, name: "Something went wrong" })
+        setErrorMessage({ ...errorMessage, name: "User With This Name Already Exist" })
+      } else {
+        dispatch(createUsers({ ...data }))   // ✅ Redux create action
+        navigate("/admin/users")
       }
     }
   }
 
-  useEffect(()=>{
-    (async()=>{
-      let response = await fetch(`${import.meta.env.VITE_APP_BACKEND_SERVER}/users`, {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data)
-        })
-        if (response.ok) {
-          alert("User created successfully!")
-          setManageUsersStateData(response)
-        }
+  useEffect(() => {
+    (() => {
+      dispatch(getUsers())   // ✅ Redux get action
     })()
-  },[])
+  }, [UsersStateData.length])
 
   return (
     <>
@@ -88,7 +71,7 @@ export default function AdminManageUsersCreatePage() {
             <AdminSidebar />
           </div>
           <div className="col-md-9">
-            <h4 className='mybackground text-light text-center p-2'>
+            <h4 className='text-light text-center p-2 bg-primary'>
               Create User
               <Link to="/admin/users">
                 <i className='bi bi-arrow-left text-light float-end'></i>

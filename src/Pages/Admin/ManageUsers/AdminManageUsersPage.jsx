@@ -1,45 +1,40 @@
 import React, { useEffect, useState } from 'react'
-import AdminSidebar from '../../../Components/AdminSidebar'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
-import $ from 'jquery';
-import 'datatables.net-dt/css/dataTables.dataTables.min.css';
-import 'datatables.net';
+import $ from 'jquery'
+import 'datatables.net-dt/css/dataTables.dataTables.min.css'
+import 'datatables.net'
 
+import AdminSidebar from '../../../Components/AdminSidebar'
+import { getUsers, deleteUsers } from "../../../Redux/ActionCreators/UsersActionCreators"
 
 export default function AdminManageUsersPage() {
-  let [ManageUsersStateData, setManageUsersStateData] = useState([])
+  let [data, setData] = useState([])
+  let UsersStateData = useSelector(state => state.UsersStateData)   // ✅ Redux state
+
+  let dispatch = useDispatch()
+
+  async function deleteRecord(id) {
+    if (window.confirm("Are you sure you want to delete this user?")) {
+      dispatch(deleteUsers({ id: id }))   // ✅ Redux delete action
+      setData(data.filter(x => x.id !== id))
+    }
+  }
 
   useEffect(() => {
-    let time = (async () => {
-      try {
-        let response = await fetch(`${import.meta.env.VITE_APP_BACKEND_SERVER}/users`, {
-          method: "GET",
-          headers: { "Content-Type": "application/json" }
-        })
-        if (response.ok) {
-          let users = await response.json()   // ✅ parse JSON
-          setManageUsersStateData(users)      // ✅ set array of users
-          let time = setTimeout(() => {
-            $('#DataTable').DataTable()
-          }, 500)
-          return time
-        } else {
-          console.error("Failed to fetch users")
-        }
-      } catch (err) {
-        console.error("Error fetching users:", err)
+    let time = (() => {
+      dispatch(getUsers())   // ✅ Redux get action
+      if (UsersStateData.length) {
+        setData(UsersStateData)
+        let time = setTimeout(() => {
+          $('#DataTable').DataTable()
+        }, 500)
+        return time
       }
     })()
     return () => clearTimeout(time)
-  }, [])
-
-  function deleteRecord(id) {
-    if (window.confirm("Are you sure you want to delete this user?")) {
-      setManageUsersStateData(ManageUsersStateData.filter(u => u.id !== id))
-      // optionally call backend DELETE API here
-    }
-  }
+  }, [UsersStateData.length])   // ✅ re-run when Redux state changes
 
   return (
     <>
@@ -68,7 +63,7 @@ export default function AdminManageUsersPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {ManageUsersStateData.map(item => (
+                  {data.map(item => (
                     <tr key={item.id}>
                       <td>{item.id}</td>
                       <td>{item.name}</td>
