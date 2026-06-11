@@ -1,0 +1,9 @@
+// USERS
+export const CREATE_USERS = "CREATE_USERS"
+export const CREATE_USERS_RED = "CREATE_USERS_RED"
+export const GET_USERS = "GET_USERS"
+export const GET_USERS_RED = "GET_USERS_RED"
+export const UPDATE_USERS = "UPDATE_USERS"
+export const UPDATE_USERS_RED = "UPDATE_USERS_RED"
+export const DELETE_USERS = "DELETE_USERS"
+export const DELETE_USERS_RED = "DELETE_USERS_RED"
