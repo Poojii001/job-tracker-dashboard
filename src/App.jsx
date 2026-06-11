@@ -19,6 +19,9 @@ import AdminDashboardPage from "./Pages/Admin/AdminDashboardPage";
 import AdminManageUsersPage from "./Pages/Admin/ManageUsers/AdminManageUsersPage";
 import AdminManageUsersCreatePage from "./Pages/Admin/ManageUsers/AdminManageUsersCreatePage";
 import AdminManageUsersUpdatePage from "./Pages/Admin/ManageUsers/AdminManageUsersUpdatePage";
+import AdminJobsCreatePage from "./Pages/Admin/Jobs/AdminJobsCreatePage";
+import AdminJobsUpdatePage from "./Pages/Admin/Jobs/AdminJobsUpdatePage";
+import AdminJobsPage from "./Pages/Admin/Jobs/AdminJobsPage";
 
 export default function App() {
   return (
@@ -59,6 +62,10 @@ export default function App() {
                 <Route path="/admin/users" element={<AdminManageUsersPage />} />
                 <Route path="/admin/users/create" element={<AdminManageUsersCreatePage />} />
                 <Route path="/admin/users/update/:id" element={<AdminManageUsersUpdatePage />} />
+
+                <Route path="/admin/jobs" element={<AdminJobsPage />} />
+                <Route path="/admin/jobs/create" element={<AdminJobsCreatePage />} />
+                <Route path="/admin/jobs/update/:id" element={<AdminJobsUpdatePage />} />
 
                 <Route path="/*" element={<Error404Page />} />
 
