@@ -2,11 +2,16 @@ import React, { useEffect, useState } from 'react'
 import AdminSidebar from '../../../Components/AdminSidebar'
 import { Link } from 'react-router-dom'
 
-export default function AdminManageUsersPage() {
-  let [ManageUsersStateData , setManageUsersStateData] = useState([])
+import $ from 'jquery';
+import 'datatables.net-dt/css/dataTables.dataTables.min.css';
+import 'datatables.net';
 
-  useEffect(()=>{
-    (async()=>{
+
+export default function AdminManageUsersPage() {
+  let [ManageUsersStateData, setManageUsersStateData] = useState([])
+
+  useEffect(() => {
+    let time = (async () => {
       try {
         let response = await fetch(`${import.meta.env.VITE_APP_BACKEND_SERVER}/users`, {
           method: "GET",
@@ -15,6 +20,10 @@ export default function AdminManageUsersPage() {
         if (response.ok) {
           let users = await response.json()   // ✅ parse JSON
           setManageUsersStateData(users)      // ✅ set array of users
+          let time = setTimeout(() => {
+            $('#DataTable').DataTable()
+          }, 500)
+          return time
         } else {
           console.error("Failed to fetch users")
         }
@@ -22,6 +31,7 @@ export default function AdminManageUsersPage() {
         console.error("Error fetching users:", err)
       }
     })()
+    return () => clearTimeout(time)
   }, [])
 
   function deleteRecord(id) {
