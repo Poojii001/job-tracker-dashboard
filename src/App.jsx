@@ -22,6 +22,9 @@ import AdminManageUsersUpdatePage from "./Pages/Admin/ManageUsers/AdminManageUse
 import AdminJobsCreatePage from "./Pages/Admin/Jobs/AdminJobsCreatePage";
 import AdminJobsUpdatePage from "./Pages/Admin/Jobs/AdminJobsUpdatePage";
 import AdminJobsPage from "./Pages/Admin/Jobs/AdminJobsPage";
+import AdminReportsPage from "./Pages/Admin/Reports/AdminReportsPage";
+import AdminReportsCreatePage from "./Pages/Admin/Reports/AdminReportsCreatePage";
+import AdminReportsUpdatePage from "./Pages/Admin/Reports/AdminReportsUpdatePage";
 
 export default function App() {
   return (
@@ -66,6 +69,10 @@ export default function App() {
                 <Route path="/admin/jobs" element={<AdminJobsPage />} />
                 <Route path="/admin/jobs/create" element={<AdminJobsCreatePage />} />
                 <Route path="/admin/jobs/update/:id" element={<AdminJobsUpdatePage />} />
+
+                <Route path="/admin/reports" element={<AdminReportsPage />} />
+                <Route path="/admin/reports/create" element={<AdminReportsCreatePage />} />
+                <Route path="/admin/reports/update/:id" element={<AdminReportsUpdatePage />} />
 
                 <Route path="/*" element={<Error404Page />} />
 
