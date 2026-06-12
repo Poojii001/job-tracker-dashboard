@@ -92,42 +92,55 @@ export default function AdminJobsCreatePage() {
             <div className="card-body">
               <form onSubmit={postData}>
                 <div className="row g-3">
+                  {/* Job Title */}
                   <div className="col-md-6">
                     <label className="form-label">Job Title*</label>
-                    <input type="text" name="title" onChange={getInputData} placeholder="Frontend Developer" className={`form-control ${show && errorMessage.title ? 'border-danger' : 'border-dark'}`} />
+                    <input type="text" name="title" onChange={getInputData} placeholder="Frontend Developer"
+                      className={`form-control ${show && errorMessage.title ? 'border-danger' : 'border-dark'}`} />
                     {show && errorMessage.title ? <small className="text-danger">{errorMessage.title}</small> : null}
                   </div>
 
+                  {/* Company */}
                   <div className="col-md-6">
                     <label className="form-label">Company*</label>
-                    <input type="text" name="company" onChange={getInputData} placeholder="Company Name" className={`form-control ${show && errorMessage.company ? 'border-danger' : 'border-dark'}`} />
+                    <input type="text" name="company" onChange={getInputData} placeholder="Company Name"
+                      className={`form-control ${show && errorMessage.company ? 'border-danger' : 'border-dark'}`} />
                     {show && errorMessage.company ? <small className="text-danger">{errorMessage.company}</small> : null}
                   </div>
 
+                  {/* Email */}
                   <div className="col-md-6">
                     <label className="form-label">Email*</label>
-                    <input type="email" name="email" onChange={getInputData} placeholder="HR Email" className={`form-control ${show && errorMessage.email ? 'border-danger' : 'border-dark'}`} />
+                    <input type="email" name="email" onChange={getInputData} placeholder="HR Email"
+                      className={`form-control ${show && errorMessage.email ? 'border-danger' : 'border-dark'}`} />
                     {show && errorMessage.email ? <small className="text-danger">{errorMessage.email}</small> : null}
                   </div>
 
+                  {/* Location */}
                   <div className="col-md-6">
                     <label className="form-label">Location*</label>
-                    <input type="text" name="location" onChange={getInputData} placeholder="Job Location" className={`form-control ${show && errorMessage.location ? 'border-danger' : 'border-dark'}`} />
+                    <input type="text" name="location" onChange={getInputData} placeholder="Job Location"
+                      className={`form-control ${show && errorMessage.location ? 'border-danger' : 'border-dark'}`} />
                     {show && errorMessage.location ? <small className="text-danger">{errorMessage.location}</small> : null}
                   </div>
 
+                  {/* Salary */}
                   <div className="col-md-6">
                     <label className="form-label">Salary*</label>
-                    <input type="text" name="salary" onChange={getInputData} placeholder="e.g. 50,000 INR/month" className={`form-control ${show && errorMessage.salary ? 'border-danger' : 'border-dark'}`} />
+                    <input type="text" name="salary" onChange={getInputData} placeholder="e.g. 50,000 INR/month"
+                      className={`form-control ${show && errorMessage.salary ? 'border-danger' : 'border-dark'}`} />
                     {show && errorMessage.salary ? <small className="text-danger">{errorMessage.salary}</small> : null}
                   </div>
 
+                  {/* Logo */}
                   <div className="col-md-6">
                     <label className="form-label">Company Logo*</label>
-                    <input type="file" name="logo" onChange={getInputData} className={`form-control ${show && errorMessage.logo ? 'border-danger' : 'border-dark'}`} />
+                    <input type="file" name="logo" onChange={getInputData}
+                      className={`form-control ${show && errorMessage.logo ? 'border-danger' : 'border-dark'}`} />
                     {show && errorMessage.logo ? <small className="text-danger">{errorMessage.logo}</small> : null}
                   </div>
 
+                  {/* Status */}
                   <div className="col-md-6">
                     <label className="form-label">Status</label>
                     <select name="status" onChange={getInputData} className="form-select">
@@ -136,8 +149,9 @@ export default function AdminJobsCreatePage() {
                     </select>
                   </div>
 
+                  {/* Posted Date */}
                   <div className="col-md-6">
-                    <label>Posted Date</label>
+                    <label className="form-label">Posted Date</label>
                     <input
                       type="date"
                       name="postedDate"
@@ -147,19 +161,7 @@ export default function AdminJobsCreatePage() {
                     />
                   </div>
 
-                  <td>
-                    <Link to={`/admin/users/update/${item.id}`} className='btn btn-light bg-primary'>
-                      <i className='bi bi-pencil-square fs-5'></i>
-                    </Link>
-                  </td>
-                  <td>
-                    <button className='btn btn-danger' onClick={() => deleteRecord(item.id)}>
-                      <i className='bi bi-x-lg'></i>
-                    </button>
-                  </td>
-
-
-
+                  {/* Submit */}
                   <div className="col-12">
                     <button type="submit" className="btn btn-primary w-100">
                       <i className="bi bi-check-circle me-2"></i> Create Job
@@ -167,6 +169,7 @@ export default function AdminJobsCreatePage() {
                   </div>
                 </div>
               </form>
+
             </div>
           </div>
         </div>

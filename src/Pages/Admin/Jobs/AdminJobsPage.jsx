@@ -51,63 +51,67 @@ export default function AdminJobsPage() {
               </Link>
             </h4>
             <div className="card-body">
-              <table id="DataTable" className='table table-hover table-striped align-middle'>
-                <thead className="table-light">
-                  <tr>
-                    <th>Id</th>
-                    <th>Job Title</th>
-                    <th>Company</th>
-                    <th>Logo</th>
-                    <th>Location</th>
-                    <th>Email</th>
-                    <th>Salary</th>
-                    <th>Posted Date</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                    <th></th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {data.map(item => (
-                    <tr key={item.id}>
-                      <td>{item.id}</td>
-                      <td>{item.title}</td>
-                      <td>{item.company}</td>
-                      <td>
-                        {item.logo ? (
-                          <img 
-                            src={`${import.meta.env.VITE_APP_IMAGE_SERVER}/${item.logo}`} 
-                            alt="Company Logo" 
-                            width="60" 
-                            height="60" 
-                            className="rounded shadow-sm"
-                          />
-                        ) : (
-                          <span className="text-muted">No Logo</span>
-                        )}
-                      </td>
-                      <td>{item.location}</td>
-                      <td>{item.email}</td>
-                      <td>{item.salary ? `${item.salary} INR` : "N/A"}</td>
-                      <td>{item.postedDate ? new Date(item.postedDate).toLocaleDateString() : "N/A"}</td>
-                      <td>
-                        <span className={`badge ${item.status ? "bg-success" : "bg-secondary"}`}>
-                          {item.status ? "Active" : "Inactive"}
-                        </span>
-                      </td>
-                      <td>
-                        <Link to={`/admin/jobs/update/${item.id}`} className='btn btn-sm btn-outline-primary me-2'>
-                          <i className='bi bi-pencil-square'></i>
-                        </Link>
-                        <button className='btn btn-sm btn-outline-danger' onClick={() => deleteRecord(item.id)}>
-                          <i className='bi bi-trash'></i>
-                        </button>
-                      </td>
+              <div className="table-responsive">
+                <table id="DataTable" className='table table-bordered table-hover table-striped align-middle'>
+                  <thead className="table-light">
+                    <tr>
+                      <th>Id</th>
+                      <th>Job Title</th>
+                      <th>Company</th>
+                      <th>Logo</th>
+                      <th>Location</th>
+                      <th>Email</th>
+                      <th>Salary</th>
+                      <th>Posted Date</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                      <th></th>
+                      <th></th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {data.map(item => (
+                      <tr key={item.id}>
+                        <td>{item.id}</td>
+                        <td>{item.title}</td>
+                        <td>{item.company}</td>
+                        <td>
+                          {item.logo ? (
+                            <img
+                              src={`${import.meta.env.VITE_APP_IMAGE_SERVER}/${item.logo}`}
+                              alt="Company Logo"
+                              width="60"
+                              height="60"
+                              className="rounded shadow-sm"
+                            />
+                          ) : (
+                            <span className="text-muted">No Logo</span>
+                          )}
+                        </td>
+                        <td>{item.location}</td>
+                        <td>{item.email}</td>
+                        <td>{item.salary ? `${item.salary} INR` : "N/A"}</td>
+                        <td>{item.postedDate ? new Date(item.postedDate).toLocaleDateString() : "N/A"}</td>
+                        <td>
+                          <span className={`badge ${item.status ? "bg-success" : "bg-secondary"}`}>
+                            {item.status ? "Active" : "Inactive"}
+                          </span>
+                        </td>
+                        <td>
+                          <Link to={`/admin/jobs/update/${item.id}`} className='btn btn-sm text-light bg-primary me-2'>
+                            <i className='bi bi-pencil-square'></i>
+                          </Link>
+                        </td>
+                        <td>
+                          <button className='btn btn-sm btn-outline-danger' bg-danger onClick={() => deleteRecord(item.id)}>
+                            <i className='bi bi-trash'></i>
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
