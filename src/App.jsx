@@ -16,9 +16,9 @@ import ActivityLogsPage from "./Pages/ActivityLogsPage";
 import AnalyticsPage from "./Pages/AnalyticsPage";
 import StaticsPage from "./Pages/StaticsPage";
 import AdminDashboardPage from "./Pages/Admin/AdminDashboardPage";
-import AdminManageUsersPage from "./Pages/Admin/ManageUsers/AdminManageUsersPage";
-import AdminManageUsersCreatePage from "./Pages/Admin/ManageUsers/AdminManageUsersCreatePage";
-import AdminManageUsersUpdatePage from "./Pages/Admin/ManageUsers/AdminManageUsersUpdatePage";
+import AdminUsersPage from "./Pages/Admin/Users/AdminUsersPage";
+import AdminUsersCreatePage from "./Pages/Admin/Users/AdminUsersCreatePage";
+import AdminUsersUpdatePage from "./Pages/Admin/Users/AdminUsersUpdatePage";
 import AdminJobsCreatePage from "./Pages/Admin/Jobs/AdminJobsCreatePage";
 import AdminJobsUpdatePage from "./Pages/Admin/Jobs/AdminJobsUpdatePage";
 import AdminJobsPage from "./Pages/Admin/Jobs/AdminJobsPage";
@@ -65,9 +65,9 @@ export default function App() {
                 <Route path="/Admin" element={<AdminDashboardPage />} />
                 <Route path="/admin/dashboard" element={<AdminDashboardPage />} />
 
-                <Route path="/admin/users" element={<AdminManageUsersPage />} />
-                <Route path="/admin/users/create" element={<AdminManageUsersCreatePage />} />
-                <Route path="/admin/users/update/:id" element={<AdminManageUsersUpdatePage />} />
+                <Route path="/admin/users" element={<AdminUsersPage />} />
+                <Route path="/admin/users/create" element={<AdminUsersCreatePage />} />
+                <Route path="/admin/users/update/:id" element={<AdminUsersUpdatePage />} />
 
                 <Route path="/admin/jobs" element={<AdminJobsPage />} />
                 <Route path="/admin/jobs/create" element={<AdminJobsCreatePage />} />

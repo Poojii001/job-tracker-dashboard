@@ -9,7 +9,7 @@ import 'datatables.net'
 import AdminSidebar from '../../../Components/AdminSidebar'
 import { getUsers, deleteUsers } from "../../../Redux/ActionCreators/UsersActionCreators"
 
-export default function AdminManageUsersPage() {
+export default function AdminUsersPage() {
   let [data, setData] = useState([])
   let UsersStateData = useSelector(state => state.UsersStateData)   // ✅ Redux state
 
