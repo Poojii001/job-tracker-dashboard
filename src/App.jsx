@@ -31,6 +31,7 @@ import AdminApplicationsUpdatePage from "./Pages/Admin/Applications/AdminApplica
 import AdminCompaniesPage from "./Pages/Admin/Companies/AdminCompaniesPage";
 import AdminCompaniesCreatePage from "./Pages/Admin/Companies/AdminCompaniesCreatePage";
 import AdminCompaniesUpdatePage from "./Pages/Admin/Companies/AdminCompaniesUpdatePage";
+import AdminNotificationsPage from "./Pages/Admin/Notifications/AdminNotificationsPage";
 
 export default function App() {
   return (
@@ -87,6 +88,8 @@ export default function App() {
                 <Route path="/admin/companies" element={<AdminCompaniesPage />} />
                 <Route path="/admin/companies/create" element={<AdminCompaniesCreatePage />} />
                 <Route path="/admin/companies/update/:id" element={<AdminCompaniesUpdatePage/>} />
+
+                <Route path="/admin/notifications" element={<AdminNotificationsPage />} />
 
                 <Route path="/*" element={<Error404Page />} />
 
