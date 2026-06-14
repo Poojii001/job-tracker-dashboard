@@ -28,6 +28,9 @@ import AdminReportsUpdatePage from "./Pages/Admin/Reports/AdminReportsUpdatePage
 import AdminApplicationsPage from "./Pages/Admin/Applications/AdminApplicationsPage";
 import AdminApplicationsCreatePage from "./Pages/Admin/Applications/AdminApplicationsCreatePage";
 import AdminApplicationsUpdatePage from "./Pages/Admin/Applications/AdminApplicationsUpdatePage";
+import AdminCompaniesPage from "./Pages/Admin/Companies/AdminCompaniesPage";
+import AdminCompaniesCreatePage from "./Pages/Admin/Companies/AdminCompaniesCreatePage";
+import AdminCompaniesUpdatePage from "./Pages/Admin/Companies/AdminCompaniesUpdatePage";
 
 export default function App() {
   return (
@@ -80,6 +83,10 @@ export default function App() {
                 <Route path="/admin/applications" element={<AdminApplicationsPage />} />
                 <Route path="/admin/applications/create" element={<AdminApplicationsCreatePage />} />
                 <Route path="/admin/applications/update/:id" element={<AdminApplicationsUpdatePage/>} />
+
+                <Route path="/admin/companies" element={<AdminCompaniesPage />} />
+                <Route path="/admin/companies/create" element={<AdminCompaniesCreatePage />} />
+                <Route path="/admin/companies/update/:id" element={<AdminCompaniesUpdatePage/>} />
 
                 <Route path="/*" element={<Error404Page />} />
 
